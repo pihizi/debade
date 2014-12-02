@@ -14,12 +14,12 @@
 
 2. redis 服务器
 
-        docker pull iamfat/redis
+        docker pull pihizi/redis
         docker run --name debade-redis \
             --dns 127.17.42.1 \
             -v /dev/log:/dev/log \
             -p 6379:6379 \
-            -d iamfat/redis
+            -d pihizi/redis
 
 3. agent 服务器
 
