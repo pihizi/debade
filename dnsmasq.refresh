@@ -1,0 +1,18 @@
+#!/bin/bash
+
+: ${DOCKERDNS_FILE:="/etc/dnsmasq.d/docker"}
+
+echo -n '' > $DOCKERDNS_FILE || exit
+
+for CONTAINER in `docker ps -q`
+do
+    NAME=`docker inspect -f "{{.Name}}" $CONTAINER | sed -e 's/^\/*//'`
+    ADDRESS=`docker inspect -f "{{.NetworkSettings.IPAddress}}" $CONTAINER`
+    echo "add DNS record: $NAME => $ADDRESS"
+    read -p "The domain of $NAME: " DOMAIN
+    echo "address=/$DOMAIN/$ADDRESS" >> $DOCKERDNS_FILE
+done
+
+echo "$DOCKERDNS_FILE updated."
+
+service dnsmasq restart

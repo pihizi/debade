@@ -1,0 +1,6 @@
+{
+    "name": "debade-php-demo",
+    "require": {
+        "pihizi/redismq-php-publisher": "dev-master"
+    }
+}
