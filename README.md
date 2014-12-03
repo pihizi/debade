@@ -34,7 +34,7 @@
 4. master 服务器
 
         docker pull pihizi/debade-master
-        docker run --name pihizi-debade-master \
+        docker run --name debade-master \
             --dns 172.17.42.1 \
             -v /dev/log:/dev/log \
             -d pihizi/debade-master
