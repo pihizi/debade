@@ -1,0 +1,48 @@
+[
+    {
+        "name": "pihizi/redismq-php-publisher",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/pihizi/redismq-php-publisher.git",
+            "reference": "edef529ce66fce39b59083cff9b4d4bf600da2fc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/pihizi/redismq-php-publisher/zipball/edef529ce66fce39b59083cff9b4d4bf600da2fc",
+            "reference": "edef529ce66fce39b59083cff9b4d4bf600da2fc",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2014-11-17 15:22:59",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "RedisMQ\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "PiHiZi",
+                "email": "pihizi@msn.com"
+            }
+        ],
+        "description": "PHP library: publish message to redis MQ",
+        "homepage": "https://github.com/pihizi/redismq-php-publisher",
+        "keywords": [
+            "MQ",
+            "php",
+            "publish",
+            "redis",
+            "subscrib"
+        ]
+    }
+]
