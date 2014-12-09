@@ -6,6 +6,7 @@
 
         docker pull pihizi/rabbitmq
         docker run --name debade-rabbitmq \
+            --restart always \
             --dns 172.17.42.1 \
             -v /dev/log:/dev/log \
             -p 5672:5672 \
@@ -16,6 +17,7 @@
 
         docker pull pihizi/redis
         docker run --name debade-redis \
+            --restart always \
             --dns 172.17.42.1 \
             -v /dev/log:/dev/log \
             -p 6379:6379 \
@@ -25,6 +27,7 @@
 
         docker pull pihizi/debade-agent
         docker run --name debade-agent \
+            --restart always \
             --dns 172.17.42.1 \
             -v /dev/log:/dev/log \
             -v /etc/lib/debade:/etc/lib/debade \
@@ -35,6 +38,7 @@
 
         docker pull pihizi/debade-master
         docker run --name debade-master \
+            --restart always \
             --dns 172.17.42.1 \
             -v /dev/log:/dev/log \
             -d pihizi/debade-master

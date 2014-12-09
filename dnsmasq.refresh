@@ -1,6 +1,6 @@
 #!/bin/bash
 
-: ${DOCKERDNS_FILE:="/etc/dnsmasq.d/docker"}
+: ${DOCKERDNS_FILE:="/etc/dnsmasq.d/debade"}
 
 echo -n '' > $DOCKERDNS_FILE || exit
 
