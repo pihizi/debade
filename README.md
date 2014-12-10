@@ -67,5 +67,9 @@
 
 2. php demo
 
+        "require": {
+            "pihizi/redismq-php-publisher": "dev-master"
+        }
+
         php php-demo/index.php
 
