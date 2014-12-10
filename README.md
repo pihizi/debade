@@ -25,23 +25,23 @@
 
 3. agent 服务器
 
-        docker pull pihizi/debade-agent
+        docker pull pihizi/debade-agent:0.1.0
         docker run --name debade-agent \
             --restart always \
             --dns 172.17.42.1 \
             -v /dev/log:/dev/log \
             -v /etc/lib/debade:/etc/lib/debade \
             -p 80:80 \
-            -d pihizi/debade-agent
+            -d pihizi/debade-agent:0.1.0
 
 4. master 服务器
 
-        docker pull pihizi/debade-master
+        docker pull pihizi/debade-master:0.1.0
         docker run --name debade-master \
             --restart always \
             --dns 172.17.42.1 \
             -v /dev/log:/dev/log \
-            -d pihizi/debade-master
+            -d pihizi/debade-master:0.1.0
 
 #### DNS服务器配置
 
