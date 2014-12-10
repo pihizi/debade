@@ -16,12 +16,21 @@ var getHandler = function(pDef) {
     var iDef = pDef || deferred();
     if (!channel) {
         connection = amqp.connect(url).then(function(pConn) {
-            channel = pConn.createChannel();
-            channel.then(function(pChannel) {
-                iDef.resolve();
-            });
-        }, function(error) {
-            log(error);
+            var makeChannel = function() {
+                pConn.createChannel(function(pError, pChannel) {
+                    if (pError!==null) {
+                        log(pError);
+                        makeChannel();
+                    }
+                    else {
+                        iDef.resolve();
+                        channel = pChannel;
+                    }
+                });
+            };
+            makeChannel();
+        }, function(pError) {
+            log(pError);
             getHandler(iDef);
         });
     }
