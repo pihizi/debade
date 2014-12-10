@@ -1,0 +1,25 @@
+{
+    "name": "pihizi/redismq-php-publisher",
+    "type": "library",
+    "description": "PHP library: publish message to redis MQ",
+    "keywords": ["php", "redis", "MQ", "publish", "subscrib"],
+    "homepage": "https://github.com/pihizi/redismq-php-publisher",
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "PiHiZi",
+            "email": "pihizi@msn.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "RedisMQ\\": "src/"
+        }
+    }
+}
