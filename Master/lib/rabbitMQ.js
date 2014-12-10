@@ -15,20 +15,13 @@ var connection, channel;
 var getHandler = function(pDef) {
     var iDef = pDef || deferred();
     if (!channel) {
+        log('初始化rabbitMQ Channel');
         connection = amqp.connect(url).then(function(pConn) {
-            var makeChannel = function() {
-                pConn.createChannel(function(pError, pChannel) {
-                    if (pError!==null) {
-                        log(pError);
-                        makeChannel();
-                    }
-                    else {
-                        iDef.resolve();
-                        channel = pChannel;
-                    }
-                });
-            };
-            makeChannel();
+            pConn.createChannel().then(function(pChannel) {
+                log('初始化rabbitMQ Channel成功');
+                channel = pChannel;
+                iDef.resolve();
+            });
         }, function(pError) {
             log(pError);
             getHandler(iDef);
@@ -42,15 +35,15 @@ var getHandler = function(pDef) {
 
 exports.send = function(pExchangeName, pMessage) {
     getHandler().then(function() {
-        channel.then(function(pChannel) {
-            var iOk = pChannel.assertExchange(pExchangeName, 'fanout', {
-                durable: false,
-                autoDelete: true
-            });
-            iOk.then(function() {
-                pChannel.publish(pExchangeName, '', new Buffer(pMessage));
-            });
+        var iOk = channel.assertExchange(pExchangeName, 'fanout', {
+            durable: false,
+            autoDelete: true
+        });
+        iOk.then(function() {
+            log('...向rabbitMQ Channel发送message');
+            channel.publish(pExchangeName, '', new Buffer(pMessage));
         });
     });
 };
+
 

@@ -8,9 +8,16 @@ var run = function() {
         var iConfig = require('./config').get('redis');
         var iPort = iConfig['port'] || 6379;
         var iHost = iConfig['host'] || 'localhost';
+        var iPassword = iConfig['password'];
         redis_channel = iConfig['channel'] || 'debade';
-        return redis.createClient(iPort, iHost);
+        var iClient = redis.createClient(iPort, iHost);
+        if (undefined!==iPassword) {
+            iClient.auth(iPassword);
+        }
+        return iClient;
     })();
+
+    log('启动debade-master服务');
 
     client.on('message', function(pChannel, pMessage) {
         var iData = JSON.parse(pMessage);
@@ -27,6 +34,8 @@ var run = function() {
                 iMQ = require('./rabbitMQ');
         }
 
+        log('将redis消息转发给rabbitMQ');
+
         iMQ.send(iChannel, JSON.stringify({data: iMessage}));
     });
 
@@ -35,6 +44,7 @@ var run = function() {
     });
 
     client.on('ready', function() {
+        log('开始接受redis消息');
         client.subscribe(redis_channel);
     });
 
@@ -45,3 +55,4 @@ var run = function() {
 };
 
 exports.run = run;
+
