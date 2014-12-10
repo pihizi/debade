@@ -1,0 +1,28 @@
+{
+  "name": "debade-callback",
+  "version": "0.1.4",
+  "description": "Debade Callback Manager",
+  "main": "index.js",
+  "bin": {
+      "debade-callback": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pihizi/debade-callback.git"
+  },
+  "keywords": [
+    "debade"
+  ],
+  "author": "PiHiZi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pihizi/debade-callback/issues"
+  },
+  "homepage": "https://github.com/pihizi/debade-callback",
+  "dependencies": {
+      "readline-sync": "0.4.9"
+  }
+}
