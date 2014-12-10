@@ -1,16 +1,6 @@
 Debade Agent Daemon
 ============
 
-## CLI
-
-* debade-agent start
-* debade-agent stop
-* debade-agent restart
-
-## 日志文件
-
-* /var/log/debade
-
 ## 配置文件
 
 * /etc/debade/debade.conf: 存放debade启动的相关信息

@@ -1,5 +1,15 @@
-Debade Mater Daemon
+Debade Agent Daemon
 ============
+
+## CLI
+
+* debade-agent start
+* debade-agent stop
+* debade-agent restart
+
+## 日志文件
+
+* /var/log/debade
 
 ## 配置文件
 
@@ -8,18 +18,17 @@ Debade Mater Daemon
         
         {
             ## 作为连接rabbitMQ Server的客户端的配置
-            "master": {
+            "agent": {
                 ## rabbitMQ的地址
                 "server": "localhost",
                 "port": 5672,
                 "user": "guest",
                 "password": "guest"
             },
-            ## 依赖redis
-            "redis": {
-                "host": "localhost",
-                "port": 80,
-                "channel": "debade"
+            ## 作为接受事件回调注册的server的配置
+            "server": {
+                ## server启动时监听的本地端口
+                "port": 80
             }
         }
 

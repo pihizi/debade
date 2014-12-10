@@ -61,9 +61,7 @@
     * 运行`debade-callback`, 并根据提示输入以下信息
         * RabbitMQ Channel: `my-test-rabbitmq-channel`
         * Callback Type: `http-jsonrpc`
-        * Callback Host: `gordon.genee.cn`
-        * Callback Port: `8930`
-        * Callback Path: `/debade`
+        * Callback URL: `http://YOUR-URL:PORT/PATH`
         * Callback Token: `TOKEN`
         * Register to Debade Agent: `http://agent.debade/register`
 
