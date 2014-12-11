@@ -33,15 +33,18 @@ var getHandler = function(pDef) {
     return iDef.promise;
 };
 
-exports.send = function(pExchangeName, pMessage) {
+exports.send = function(pExchangeName, pMessage, pCallback) {
     getHandler().then(function() {
         var iOk = channel.assertExchange(pExchangeName, 'fanout', {
             durable: false,
             autoDelete: true
         });
         iOk.then(function() {
-            log('...向rabbitMQ Channel发送message');
-            channel.publish(pExchangeName, '', new Buffer(pMessage));
+            log('.');
+            var iResult = channel.publish(pExchangeName, '', new Buffer(pMessage));
+            if (false!==iResult) {
+                pCallback();
+            }
         });
     });
 };
